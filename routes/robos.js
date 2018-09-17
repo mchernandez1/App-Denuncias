@@ -6,7 +6,7 @@ const assert = require('assert');
 // Connection URL
 const url = 'mongodb://localhost:27017';
 // Database Name
-const dbName = 'appRobos';
+const dbName = 'appDenuncias';
 
 //Pedir todos los robos
 const findDocuments = function (db, filter, callback) {
@@ -54,7 +54,7 @@ function insertIntoUser(data, db, callback) {
   collection.updateOne({
     user: data.user
   }, {
-    $push: data
+    $push: { robos : data }
   }, function (err, result) {
     console.log('Updated the user');
     callback(result);
@@ -85,7 +85,7 @@ function insertReporte(roboId, data, db, callback) {
   collection.updateOne({
     id: roboId
   }, {
-    $push: data
+    $push: { reportes : data }
   }, function (err, result) {
     console.log('Updated the user');
     callback(result);
@@ -107,17 +107,17 @@ function newReporte(id, data, cb) {
 }
 
 //Pathnames
-router.get('/robos', function (req, res) {
+router.get('/', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   getAllRobos(req.filter, (data) => res.send(data));
 });
 
-router.post('/robos', function (req, res) {
+router.post('/', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   newRobo(req.body, (result) => res.send(result));
 });
 
-router.post('/robos/:id(\d+)/reporte', function (req, res) {
+router.post('/:id(\d+)/reporte', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   newReporte(req.params.id, req.body, (result) => res.send(result));
 });
