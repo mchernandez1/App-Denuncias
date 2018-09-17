@@ -3,21 +3,24 @@ Aplicación para denunciar robos que ocurren en Bogotá.
 Proyecto 2 para la clase de desarrollo web Uniandes.
 Desarrollado usando Node.js, Express, y React.js
 
-#Instalación
+# Instalación
 
 Para hacer una instalación local del sistema, corra los siguientes comandos:
 <!--Falta el importar la base de datos-->
-mongoimport -d appDenuncias -c users --jsonArray --file users.json
-mongoimport -d appDenuncias -c robos --jsonArray --file robos.json
-npm install
-npm start
+- mongoimport -d appDenuncias -c users --jsonArray --file users.json
+- mongoimport -d appDenuncias -c robos --jsonArray --file robos.json
+- npm install
+- npm start
+- cd /frontdenuncias
+- yarn install
+- yarn start
 
-#Autores
+# Autores
 
-[Juan Sebastián Díaz](https://js-diaz.github.io/)
-[Juan David Vega](https://jd-vega11.github.io/)
+- [Juan Sebastián Díaz](https://js-diaz.github.io/)
+- [Juan David Vega](https://jd-vega11.github.io/)
 
-#License
+# License
 
 MIT License
 
