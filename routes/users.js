@@ -9,11 +9,11 @@ const url = 'mongodb://localhost:27017';
 const dbName = 'appDenuncias';
 
 //Pedir todos los users
-const findDocuments = function (db, callback) {
+const findDocuments = function (obj, db, callback) {
   // Get the documents collection
   const collection = db.collection('users');
   // Find some documents
-  collection.find({}).toArray(function (err, docs) {
+  collection.find(obj).toArray(function (err, docs) {
     assert.equal(err, null);
     //        console.log("Found the following records");
     //        console.log(docs)
@@ -28,13 +28,33 @@ function getAllUsers(cb) {
     console.log('Connected successfully to server');
 
     const db = client.db(dbName);
-    findDocuments(db, (data) => {
+    findDocuments({}, db, (data) => {
       cb(data);
       client.close();
     });
   });
 
 }
+
+//Get a user for login
+function getUser(email, pass, cb) {
+  // Use connect method to connect to the server
+  MongoClient.connect(url, function (err, client) {
+    assert.equal(null, err);
+    console.log('Connected successfully to server');
+
+    const db = client.db(dbName);
+    findDocuments({
+      'email': email,
+      'contraseña': pass
+    }, db, (data) => {
+      cb(data);
+      client.close();
+    });
+  });
+
+}
+
 
 //Add a user
 const insertDocuments = function (data, db, callback) {
@@ -55,9 +75,19 @@ function newUser(data, cb) {
     console.log('Connected successfully to server');
 
     const db = client.db(dbName);
-    insertDocuments(data, db, (res) => {
-      cb(res);
-      client.close();
+    findDocuments({
+      'email': data.email
+    }, db, (res) => {
+      if (res === []) {
+        insertDocuments(data, db, (res) => {
+          cb(res);
+          client.close();
+        });
+      }
+      else{
+        cb('email already exists');
+        client.close();
+      }
     });
   });
 }
@@ -68,10 +98,17 @@ function newUser(data, cb) {
 //  res.setHeader('Content-Type', 'application/json');
 //  getAllUsers((data) => res.send(data));
 //});
+router.get('/login', function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  getUser(req.body.email, req.body.contraseña, (result) => res.send(result));
+});
 
 router.post('/', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
-  newUser(req.body, (result) => res.send(result));
+  newUser(req.body, (result) => res.send({
+    'exists': (result !== []),
+    'user': result[0]
+  }));
 });
 
 

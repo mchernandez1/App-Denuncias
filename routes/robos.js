@@ -52,7 +52,7 @@ function insertIntoUser(data, db, callback) {
   // Get the documents collection
   const collection = db.collection('users');
   collection.updateOne({
-    user: data.user
+    'user' : data.user
   }, {
     $push: { robos : data }
   }, function (err, result) {
@@ -83,9 +83,9 @@ function insertReporte(roboId, data, db, callback) {
   // Get the documents collection
   const collection = db.collection('robos');
   collection.updateOne({
-    id: roboId
+    'id': roboId
   }, {
-    $push: { reportes : data }
+    $push: { 'reportes' : data }
   }, function (err, result) {
     console.log('Updated the user');
     callback(result);
