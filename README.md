@@ -7,6 +7,8 @@ Desarrollado usando Node.js, Express, y React.js
 
 Para hacer una instalación local del sistema, corra los siguientes comandos:
 <!--Falta el importar la base de datos-->
+mongoimport -d appDenuncias -c users --jsonArray --file users.json
+mongoimport -d appDenuncias -c robos --jsonArray --file robos.json
 npm install
 npm start
 

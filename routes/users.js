@@ -6,7 +6,7 @@ const assert = require('assert');
 // Connection URL
 const url = 'mongodb://localhost:27017';
 // Database Name
-const dbName = 'appusers';
+const dbName = 'appDenuncias';
 
 //Pedir todos los users
 const findDocuments = function (db, callback) {
@@ -64,10 +64,10 @@ function newUser(data, cb) {
 
 
 //Pathnames
-router.get('/users', function (req, res) {
-  res.setHeader('Content-Type', 'application/json');
-  getAllUsers((data) => res.send(data));
-});
+//router.get('/users', function (req, res) {
+//  res.setHeader('Content-Type', 'application/json');
+//  getAllUsers((data) => res.send(data));
+//});
 
 router.post('/users', function (req, res) {
   res.setHeader('Content-Type', 'application/json');

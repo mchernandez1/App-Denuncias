@@ -6,7 +6,7 @@ const assert = require('assert');
 // Connection URL
 const url = 'mongodb://localhost:27017';
 // Database Name
-const dbName = 'appRobos';
+const dbName = 'appDenuncias';
 
 //Pedir todos los robos
 const findDocuments = function (db, filter, callback) {
@@ -54,7 +54,7 @@ function insertIntoUser(data, db, callback) {
   collection.updateOne({
     user: data.user
   }, {
-    $push: data
+    $push: { robos : data }
   }, function (err, result) {
     console.log('Updated the user');
     callback(result);
@@ -85,7 +85,7 @@ function insertReporte(roboId, data, db, callback) {
   collection.updateOne({
     id: roboId
   }, {
-    $push: data
+    $push: { reportes : data }
   }, function (err, result) {
     console.log('Updated the user');
     callback(result);

@@ -1,0 +1,35 @@
+[
+    {
+        "user" : "1",
+        "direccion" : "Cll 102 # 15 - 43",
+        "barrio" : "Usaquen",
+        "fecha" : "15/09/18",
+        "hora" : "20:30",
+        "articulo" : "Billetera",
+        "delicuentes" : "Saco negro con capucha, jean",
+        "modus" : "Asalto",
+        "reportes" : []
+    },
+    {
+        "user" : "1",
+        "direccion" : "Cll 63a #15-99",
+        "barrio" : "Chapinero",
+        "fecha" : "10/09/18",
+        "hora" : "22:10",
+        "articulo" : "Celular",
+        "delicuentes" : "Chaqueta azul, camiseta blanca, jean",
+        "modus" : "Asalto",
+        "reportes" : []
+    },
+    {
+        "user" : "2",
+        "direccion" : "Cra 101b #2a-98",
+        "barrio" : "Suba",
+        "fecha" : "12/09/18",
+        "hora" : "13:00",
+        "articulo" : "billetera",
+        "delicuentes" : "niño pequeño, saco gris",
+        "modus" : "Cosquilleo",
+        "reportes" : []
+    }
+]
