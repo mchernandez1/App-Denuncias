@@ -107,17 +107,17 @@ function newReporte(id, data, cb) {
 }
 
 //Pathnames
-router.get('/robos', function (req, res) {
+router.get('/', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   getAllRobos(req.filter, (data) => res.send(data));
 });
 
-router.post('/robos', function (req, res) {
+router.post('/', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   newRobo(req.body, (result) => res.send(result));
 });
 
-router.post('/robos/:id(\d+)/reporte', function (req, res) {
+router.post('/:id(\d+)/reporte', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   newReporte(req.params.id, req.body, (result) => res.send(result));
 });

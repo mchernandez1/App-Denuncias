@@ -64,12 +64,12 @@ function newUser(data, cb) {
 
 
 //Pathnames
-//router.get('/users', function (req, res) {
+//router.get('/', function (req, res) {
 //  res.setHeader('Content-Type', 'application/json');
 //  getAllUsers((data) => res.send(data));
 //});
 
-router.post('/users', function (req, res) {
+router.post('/', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   newUser(req.body, (result) => res.send(result));
 });
