@@ -16,3 +16,5 @@
     "morgan": "~1.9.0"
   }
 }
+
+/*Prodrían incluir el atributo main para indicar cúal es su clase principal además los autores del proyecto en está sección */
