@@ -54,9 +54,12 @@ render() {
     <div className="container-fluid">
       <NavBar display={this.state.noLogin} login = {login} />;    
     </div>
+ /*Acá se está cerrando el tag pero no veo donde lo abren*/
     <Copyright/>
     </div>);
 }
 }
 
 export default App;
+          
+/*Les recomiendo eliminar el código que está documento si no lo necesitan. Además se podría organizar el código según sus funciones para que sea más fácil a la vista ver donde se declara y se acaba una parte*/          
