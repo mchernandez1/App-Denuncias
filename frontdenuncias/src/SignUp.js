@@ -98,3 +98,5 @@ export default class SignUp extends Component {
         );
     }
 }
+
+/*En una proxima versión podrían agregar una base de datos para tener la posibilidad de guardar a nuevos contactos, además de los que ya tienen alojados en el archivo .json */
